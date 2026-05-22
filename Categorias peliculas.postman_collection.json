@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "35bfce97-2b80-4ddd-b7fb-41aec8e2e319",
+    "name": "Categorias peliculas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-35bfce97-2b80-4ddd-b7fb-41aec8e2e319?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/categorias",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/categorias",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/categorias",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreCategoria\": \"Alo\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/categorias",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/categorias/6a10a12f05d0997be26b5234",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreCategoria\" : \"Terror\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/categorias/6a10a12f05d0997be26b5234",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias",
+            "6a10a12f05d0997be26b5234"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/categorias/6a10a302199131adebc8076c",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/categorias/6a10a12f05d0997be26b5234",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias",
+            "6a10a12f05d0997be26b5234"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Vayan a Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Categorias creadas\n\n{\"nombreCategoria\": \"Terror\", \"idCategoria\": \"6a10a12f05d0997be26b5234\" }\n\n{\"nombreCategoria\": \"Accion\", \"idCategoria\": \"6a10a15005d0997be26b5235\"}\n\n{\"nombreCategoria\": \"Romance\", \"idCategoria\": \"6a10a16005d0997be26b5236\"}"
+      },
+      "response": []
+    }
+  ]
+}
