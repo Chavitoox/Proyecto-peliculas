@@ -8,4 +8,4 @@ En la carpeta Postman se guardaran las colecciones de postman para cada microser
 
 Si quieren comprobar si funciona la colección anteriormente exportada, en Postman denle a los 3 puntos arriba de donde dice collections, luego import y seleccionan el .json que quedo al exportar la colección.
 
-**El paso 3 es para que todos tengamos los mismos datos en el mongoDB.**
+**El paso 3 es para que todos tengamos los mismos datos en el mongoDB. Por lo que si quieren hacer un Post los datos para hacerlo estan en los .json de esta carpeta**
