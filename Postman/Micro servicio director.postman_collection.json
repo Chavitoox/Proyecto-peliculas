@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "2ed27c59-c5d3-4cbb-8968-15bb297b6db3",
+    "name": "Micro servicio director",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54313590",
+    "_collection_link": "https://go.postman.co/collection/54313590-2ed27c59-c5d3-4cbb-8968-15bb297b6db3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8081/director/director",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            "director"
+          ]
+        },
+        "description": "{ \"id\": \"3\", \"nacionalidad\": \"uruguaya\", \"nombre\": \"jane juliet\" },\n\n{ \"id\": \"4\", \"nacionalidad\": \"paraguaya\", \"nombre\": \"jose jose\" },\n\n{ \"id\": \"5\", \"nacionalidad\": \"chilena\", \"nombre\": \"Migel Jara\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Steven Spielberg\",\r\n  \"nacionalidad\": \"estadounidense\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/director/director",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            "director"
+          ]
+        },
+        "description": "StartFragment{        \"id\": \"6a13c2d0f83256fcd6de0f25\",        \"nacionalidad\": \"británica\",        \"nombre\": \"Christopher Nolan\"    },    {        \"id\": \"6a13c2d9f83256fcd6de0f26\",        \"nacionalidad\": \"estadounidense\",        \"nombre\": \"Quentin Tarantino\"    },    {        \"id\": \"6a13c2dff83256fcd6de0f27\",        \"nacionalidad\": \"estadounidense\",        \"nombre\": \"Steven Spielberg\"    }\\]EndFragment"
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Jane Juliet Actualizado\",\r\n  \"nacionalidad\": \"uruguaya\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/director/director/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            "director",
+            "3"
+          ]
+        },
+        "description": "StartFragment{  \"nombre\": \"Jane Juliet Actualizado\",  \"nacionalidad\": \"uruguaya\"}EndFragment"
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/director/director/5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            "director",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
