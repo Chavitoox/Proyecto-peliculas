@@ -4,8 +4,8 @@ import com.example.categoria.model.Categoria;
 import com.example.categoria.repository.CategoriaRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
@@ -13,43 +13,59 @@ public class CategoriaController {
     public CategoriaRepository repo;
 
     @GetMapping
-    public List<Categoria> listar(){
-        return repo.findAll();
+    public ResponseEntity<?> listar(){
+        return ResponseEntity.ok(repo.findAll());
     }
 
     @GetMapping("/{id}")
-    public Categoria buscarPorId(@PathVariable String id){
-        return repo.findById(id).orElse(null);
+    public ResponseEntity<?> buscarPorId(@PathVariable String id){
+        return ResponseEntity.ok().body(repo.findById(id).orElse(null));
     }
 
     @PostMapping
-    public Categoria crear(@RequestBody Categoria c){
-        return repo.save(c);
+    public ResponseEntity<?> crear(@RequestBody Categoria c){
+        if(c.getNombreCategoria() == null || c.getNombreCategoria().trim().isEmpty()){
+            return ResponseEntity.badRequest().body("El nombre de la categoria no puede estar vacio");
+        }
+
+        if(repo.existsByNombreCategoria(c.getNombreCategoria())){
+            return ResponseEntity.badRequest().body("La categoria ingresada ya existe");
+        }
+
+        return ResponseEntity.ok().body(repo.save(c));
     }
 
     @PutMapping("/{id}")
-    public Categoria actualizar(@PathVariable String id, @RequestBody Categoria c){
+    public ResponseEntity<?> actualizar(@PathVariable String id, @RequestBody Categoria c){
         Categoria existe = repo.findById(id).orElse(null);
 
         if(existe == null){
-            return null;
+            return ResponseEntity.badRequest().body("Id no encontrado");
+        }
+
+        if(c.getNombreCategoria() == null || c.getNombreCategoria().trim().isEmpty()){
+            return ResponseEntity.badRequest().body("El nombre de la categoria no puede estar vacio");
+        }
+
+        if (repo.existsByNombreCategoria(c.getNombreCategoria()) && !existe.getNombreCategoria().equals(c.getNombreCategoria())) {
+            return ResponseEntity.badRequest().body("La categoria ingresada ya existe");
         }
 
         existe.setNombreCategoria(c.getNombreCategoria());
         
-        return repo.save(existe);
+        return ResponseEntity.ok().body(repo.save(existe));
     }
 
     @DeleteMapping("/{id}")
-    public String eliminar(@PathVariable String id){
+    public ResponseEntity<?> eliminar(@PathVariable String id){
         Categoria existe = repo.findById(id).orElse(null);
 
         if(existe == null){
-            return "No se encontro el id buscado";
+            return ResponseEntity.badRequest().body("Id no encontrado");
         }
-        
+
         repo.deleteById(id);
-        return "Categoria eliminada exitosamente";
+        return ResponseEntity.ok().body("Categoria eliminada exitosamente");
     }
 
 }
