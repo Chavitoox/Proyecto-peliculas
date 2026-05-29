@@ -1,4 +1,4 @@
-package com.example.Director;
+package com.example.director;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

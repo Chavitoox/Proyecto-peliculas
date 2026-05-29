@@ -1,4 +1,4 @@
-package com.example.Director;
+package com.example.director;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
