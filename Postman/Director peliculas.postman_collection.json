@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "03ae5e44-a0e7-4b0f-b7b4-622f675c70ea",
+    "name": "Director peliculas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-03ae5e44-a0e7-4b0f-b7b4-622f675c70ea?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get director",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/director",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post director",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"nombreDirector\": \"santiago\",\r\n        \"nacionalidad\": \"chileno\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/director",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put director",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"nombreDirector\": \"Quentin Tarantino\",\r\n        \"nacionalidad\": \"Estadounidense\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/director/6a19c6c2dc3725d07c99fe0c",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            "6a19c6c2dc3725d07c99fe0c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete director",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    {\r\n        \"nombreDirector\": \"Quentin Tarantino\",\r\n        \"nacionalidad\": \"Estadounidense\"\r\n    }"
+        },
+        "url": {
+          "raw": "http://localhost:8081/director/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "director",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DOCS",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "{\"nombreDirector\": \"Christopher Nolan\", \"nacionalidad\": \"Británica\", \"idDirector\": \"6a19c6b5dc3725d07c99fe0b\" }\n\n{\"nombreDirector\": \"Quentin Tarantino\", \"nacionalidad\": \"Estadounidense\", \"idDirector\": \"6a19c6c2dc3725d07c99fe0c\"}\n\n{\"nombreDirector\": \"Steven Spielberg\", \"nacionalidad\": \"Estadounidense\", \"idDirector\": \"6a19c6d8dc3725d07c99fe0d\"}"
+      },
+      "response": []
+    }
+  ]
+}
