@@ -1,77 +1,53 @@
 package com.example.director.controller;
 
+import com.example.director.model.Director;
+import com.example.director.repository.DirectorRepository;
+import com.example.director.Exception.RecursoNoEncontradoException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
-import com.example.director.model.Director;
-import com.example.director.repository.DirectorRepository;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/director")
+@RequestMapping("/directores")
 public class DirectorController {
-
+    
     @Autowired
     private DirectorRepository repo;
 
     @GetMapping
-    public ResponseEntity<?> listar() {
-        return ResponseEntity.ok().body(repo.findAll());
+    public ResponseEntity<?> listar(){
+        return ResponseEntity.ok(repo.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable String id) {
-        return ResponseEntity.ok().body(repo.findById(id).orElse(null));
+    public ResponseEntity<?> buscarPorId(@PathVariable String id){
+        return ResponseEntity.ok().body(repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Director no encontrado")));
     }
 
     @PostMapping
-    public ResponseEntity<?> crear(@RequestBody Director d) {
-
-        if (d.getNombreDirector() == null || d.getNombreDirector().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("El campo NOMBRE no puede estar vacio");
-        }
-
-        if (d.getNacionalidad() == null || d.getNacionalidad().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("El campo NACIONALIDAD no puede estar vacio");
-        }
-
+    public ResponseEntity<?> crear(@Valid @RequestBody Director d){
         return ResponseEntity.ok().body(repo.save(d));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizar(@RequestBody Director d, @PathVariable String id) {
+    public ResponseEntity<?> actualizar(@Valid @RequestBody Director d, @PathVariable  String id ){
 
-        Director existente = repo.findById(id).orElse(null);
+        Director existe = repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Director no encontrado"));
 
-        if (existente == null) {
-            return ResponseEntity.badRequest().body("Id no encontrado");
-        }
+        existe.setNombre(d.getNombre());
+        existe.setNacionalidad(d.getNacionalidad());
 
-        if (d.getNombreDirector() == null || d.getNombreDirector().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("El nombre del director no puede estar vacio");
-        }
-
-        if (d.getNacionalidad() == null || d.getNacionalidad().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("La nacionalidad no puede estar vacia");
-        }
-
-        existente.setNombreDirector(d.getNombreDirector());
-        existente.setNacionalidad(d.getNacionalidad());
-
-        return ResponseEntity.ok().body(repo.save(existente));
+        return ResponseEntity.ok().body(repo.save(existe));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable String id) {
-        Director existe = repo.findById(id).orElse(null);
-
-        if (existe == null) {
-            return ResponseEntity.badRequest().body("Id no encontrado");
-        }
+    public ResponseEntity<?> eliminar(@PathVariable  String id){
+        repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Director no encontrado"));
 
         repo.deleteById(id);
         return ResponseEntity.ok().body("Director eliminado exitosamente");
     }
-
 }
-

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface PeliculaClient {
 
     
-    @GetMapping("/peliculas/{id}/detalle")
+    @GetMapping("/peliculas/detalle/{id}")
     Object buscarPelicula(@PathVariable("id") Long id);
 }

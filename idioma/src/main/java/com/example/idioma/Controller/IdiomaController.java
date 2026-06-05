@@ -1,14 +1,17 @@
-package com.example.idioma.Controller;
+package com.example.idioma.controller;
+
+import com.example.idioma.Exception.RecursoNoEncontradoException;
+import com.example.idioma.model.Idioma;
+import com.example.idioma.repository.IdiomaRepository;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import java.util.List;
-import com.example.idioma.model.Idioma;
-import com.example.idioma.repository.IdiomaRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Idioma")
+@RequestMapping("/idiomas")
 public class IdiomaController {
     @Autowired
     private IdiomaRepository repo;
@@ -18,55 +21,38 @@ public class IdiomaController {
         return ResponseEntity.ok(repo.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable String id){
+        return ResponseEntity.ok().body(repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Idioma no encontrado")));
+    }
+
     @PostMapping
-    public ResponseEntity<?> crear(@RequestBody Idioma i) {
-        List<Idioma> ExistenteLeng = repo.findByLenguaje(i.getLenguaje());
-        List<Idioma> ExistenteVer = repo.findByVersion(i.getVersion());
-        if (i.getLenguaje() == null || i.getLenguaje().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("El lenguaje no puede estar vacio");
+    public ResponseEntity<?> crear(@Valid @RequestBody Idioma i) {
+        if(repo.existsByLenguajeAndVersion(i.getLenguaje(), i.getVersion())){
+            return ResponseEntity.badRequest().body("Ya existe un idioma con esta combinación de lenguaje y versión");
         }
-        if (i.getVersion() == null || i.getVersion().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("La version no puede estar vacia");
-        }
-        if (!ExistenteLeng.isEmpty() && !ExistenteVer.isEmpty()) {
-            return ResponseEntity.badRequest().body("ya Existe esa version del idioma");
-        }
-        Idioma guardada = repo.save(i);
-        return ResponseEntity.status(201).body(guardada);
+        return ResponseEntity.ok().body(repo.save(i));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizar(@PathVariable String id, @RequestBody Idioma i) {
-        Idioma existe = repo.findById(id).orElse(null);
-        List<Idioma> ExistenteLeng = repo.findByLenguaje(i.getLenguaje());
-        List<Idioma> ExistenteVer = repo.findByVersion(i.getVersion());
+    public ResponseEntity<?> actualizar(@PathVariable String id, @Valid @RequestBody Idioma i) {
+        Idioma existe = repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Idioma no encontrado"));
 
-        if (i.getLenguaje() == null || i.getLenguaje().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("El lenguaje no puede estar vacio");
-        }
-        if (i.getVersion() == null || i.getVersion().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("La version no puede estar vacia");
-        }
-        if (!ExistenteLeng.isEmpty() && !ExistenteVer.isEmpty()) {
-            return ResponseEntity.badRequest().body("ya Existe esa version del idioma");
+        if(repo.existsByLenguajeAndVersion(i.getLenguaje(), i.getVersion()) 
+        && !(existe.getLenguaje().equals(i.getLenguaje()) && existe.getVersion().equals(i.getVersion()))) {
+            return ResponseEntity.badRequest().body("Esta combinación de idioma y versión ya existe");
         }
 
         existe.setVersion(i.getVersion());
         existe.setLenguaje(i.getLenguaje());
-
         return ResponseEntity.ok().body(repo.save(existe));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable String id){
-        Idioma existe = repo.findById(id).orElse(null);
-
-        if(existe == null){
-            return ResponseEntity.badRequest().body("Id no encontrado");
-        }
+        repo.findById(id).orElseThrow(()-> new RecursoNoEncontradoException("Idioma no encontrado"));
 
         repo.deleteById(id);
-        return ResponseEntity.ok().body("Idioma eliminada exitosamente");
+        return ResponseEntity.ok().body("Idioma eliminado exitosamente");
     }
-
 }

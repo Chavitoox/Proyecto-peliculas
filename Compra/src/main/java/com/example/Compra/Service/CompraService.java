@@ -21,9 +21,7 @@ public class CompraService {
 
     public ResponseEntity<?> registrarCompra(@RequestBody Compra c){
 
-        if(c.getIdPelicula() == null){
-            return ResponseEntity.badRequest().body("La pelicula es Obligatoria!");
-        }
+
         if(c.getPrecio() <= 0){
             return ResponseEntity.badRequest()
             .body("la Compra No puede tener un valor de 0!");
@@ -86,9 +84,6 @@ public class CompraService {
             return ResponseEntity.badRequest().body("Compra no Encontrada!");
         }
 
-        if(c.getIdPelicula() != null){
-            return ResponseEntity.badRequest().body("La pelicula es Obligatoria!");
-        }
         if(c.getPrecio() <= 0){
             return ResponseEntity.badRequest()
             .body("la Compra No puede tener un valor de 0!");

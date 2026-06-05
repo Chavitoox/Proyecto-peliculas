@@ -1,20 +1,29 @@
-package com.example.Pelicula.Model;
+package com.example.pelicula.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 @Entity
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
+    @NotBlank(message = "El nombre de la pelicula no puede estar vacio")
     private String nombre;
+    @Min(value = 1,message = "La duración de la pelicula debe ser mayor a 0")
     private int duracion;
+    @Min(value = 1900, message = "El año de la pelicula debe ser mayor a 1900")
     private int anio;
+    @NotBlank(message = "El id del idioma no puede estar vacio")
     private String idIdioma;
+    @NotBlank(message = "El id del director no puede estar vacio")
     private String idDirector;
+    @NotBlank(message = "El id de la categoria no puede estar vacio")
     private String idCategoria;
 
     public Pelicula() {

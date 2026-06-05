@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "0289e2a5-3c4d-4b5d-ab96-108244cea756",
+    "name": "Pelicula",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-0289e2a5-3c4d-4b5d-ab96-108244cea756?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8083/peliculas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\" : \"Kill Bill 4\",\r\n    \"duracion\" : 2,\r\n    \"anio\" : 2007,\r\n    \"idIdioma\" : \"6a14fa4f428c856ba5b21311\",\r\n    \"idDirector\" : \"6a2342d3ffdd42a5e5ce0269\",\r\n    \"idCategoria\" : \"6a10a15005d0997be26b5235\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\" : \"Kill Bill 3\",\r\n    \"duracion\" : 2,\r\n    \"anio\" : 2007,\r\n    \"idIdioma\" : \"6a14fa4f428c856ba5b21311\",\r\n    \"idDirector\" : \"6a2342d3ffdd42a5e5ce0269\",\r\n    \"idCategoria\" : \"6a10a15005d0997be26b5235\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\" : \"Kill Bill\",\r\n    \"duracion\" : 2,\r\n    \"anio\" : 2003,\r\n    \"idIdioma\" : \"6a14fa4f428c856ba5b21311\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "```\n{\n    \"anio\": 2003,\n    \"duracion\": 2,\n    \"id\": 1,\n    \"idCategoria\": \"6a10a15005d0997be26b5235\",\n    \"idDirector\": \"6a2342d3ffdd42a5e5ce0269\",\n    \"idIdioma\": \"6a14fa4f428c856ba5b21311\",\n    \"nombre\": \"Kill Bill\"\n},\n{\n    \"anio\": 2005,\n    \"duracion\": 2,\n    \"id\": 2,\n    \"idCategoria\": \"6a10a15005d0997be26b5235\",\n    \"idDirector\": \"6a2342d3ffdd42a5e5ce0269\",\n    \"idIdioma\": \"6a14fa4f428c856ba5b21311\",\n    \"nombre\": \"Kill Bill 2\"\n},\n{\n    \"anio\": 2007,\n    \"duracion\": 2,\n    \"id\": 3,\n    \"idCategoria\": \"6a10a15005d0997be26b5235\",\n    \"idDirector\": \"6a2342d3ffdd42a5e5ce0269\",\n    \"idIdioma\": \"6a14fa4f428c856ba5b21311\",\n    \"nombre\": \"Kill Bill 3\"\n}\n\n ```"
+      },
+      "response": []
+    }
+  ]
+}

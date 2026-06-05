@@ -5,5 +5,3 @@ proyecto de microservicios trabajado en Java con Spring Boot
 - Puerto de categoria = 8080  
 - Puerto de Director = 8081  
 - Puerto de idioma = 8082
-- Puerto de pelicula = 8083
-- Puerto de compra = 8084

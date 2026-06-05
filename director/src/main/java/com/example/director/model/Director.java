@@ -3,38 +3,40 @@ package com.example.director.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "directores")
+import jakarta.validation.constraints.NotBlank;
+@Document
 public class Director {
     @Id
-    private String idDirector;
-    private String nombreDirector;
+    private String id;
+    @NotBlank(message = "El nombre no puede estar vacio")
+    private String nombre;
+    @NotBlank(message = "La nacionalidad no puede estar vacia")
     private String nacionalidad;
 
     public Director() {
     };
 
-    public Director(String nombreDirector, String nacionalidad){
-        this.nombreDirector = nombreDirector;
-        this.nacionalidad = nacionalidad;
+    public String getId() {
+        return id;
     }
 
-    public String getIdDirector(){
-        return idDirector;
+    public void setId(String id) {
+        this.id = id;
     }
-    public String getNombreDirector(){
-        return nombreDirector;
+
+    public String getNombre() {
+        return nombre;
     }
-    public String getNacionalidad(){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setIdDirector(String idDirector){
-        this.idDirector = idDirector;
-    }
-    public void setNombreDirector(String nombreDirector){
-        this.nombreDirector = nombreDirector;
-    }
-    public void setNacionalidad(String nacionalidad){
+    public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 

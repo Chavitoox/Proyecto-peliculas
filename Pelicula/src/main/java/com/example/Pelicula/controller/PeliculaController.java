@@ -1,11 +1,13 @@
-package com.example.Pelicula.controller;
+package com.example.pelicula.controller;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import com.example.Pelicula.Model.Pelicula;
-import com.example.Pelicula.service.PeliculaService;
+import com.example.pelicula.model.Pelicula;
+import com.example.pelicula.service.PeliculaService;
 
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/peliculas")
 
@@ -17,12 +19,19 @@ public class PeliculaController {
     public ResponseEntity<?> listar (){
         return service.listar(); 
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id){
+        return service.buscarPorId(id);
+    }
+
     @PostMapping
-    public ResponseEntity<?> crear (@RequestBody Pelicula p){
+    public ResponseEntity<?> crear (@Valid @RequestBody Pelicula p){
         return service.crear(p);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizar (@PathVariable Long id,@RequestBody Pelicula p){
+    public ResponseEntity<?> actualizar (@PathVariable Long id, @Valid @RequestBody Pelicula p){
         return service.actualizar(id, p);
     }
 
@@ -30,13 +39,10 @@ public class PeliculaController {
     public ResponseEntity<?> Eliminar(@PathVariable long id){
         return service.Eliminar(id);
     }
-    @PostMapping("/Guardar")
-    public ResponseEntity<?> guardarIdioma (@RequestBody Pelicula p){
-        return service.guardarIdioma(p);
-    }
-    @GetMapping("/{id}/detalle")
-    public ResponseEntity<?> MostrarIdioma(@PathVariable Long id){
-        return service.mostrarDatos(id);
+
+    @GetMapping("/detalle/{id}")
+    public ResponseEntity<?> mostrarDetalle(@PathVariable Long id){
+        return service.mostrarDetalle(id);
     }
     
 }
