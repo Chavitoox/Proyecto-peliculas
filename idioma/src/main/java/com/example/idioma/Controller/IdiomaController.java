@@ -56,3 +56,4 @@ public class IdiomaController {
         return ResponseEntity.ok().body("Idioma eliminado exitosamente");
     }
 }
+

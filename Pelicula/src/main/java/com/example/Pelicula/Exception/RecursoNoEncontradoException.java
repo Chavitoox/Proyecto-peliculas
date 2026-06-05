@@ -5,3 +5,4 @@ public class RecursoNoEncontradoException extends RuntimeException{
         super(mensaje);
     }
 }
+

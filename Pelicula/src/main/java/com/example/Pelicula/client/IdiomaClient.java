@@ -8,3 +8,4 @@ public interface IdiomaClient {
     @GetMapping("idiomas/{id}")
     Object buscarIdioma(@PathVariable String id);
 }
+

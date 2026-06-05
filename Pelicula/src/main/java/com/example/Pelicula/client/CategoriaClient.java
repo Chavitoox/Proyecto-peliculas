@@ -8,3 +8,4 @@ public interface CategoriaClient{
     @GetMapping("/categorias/{id}")
     Object buscarCategoria(@PathVariable String id);
 }
+
