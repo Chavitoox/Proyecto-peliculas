@@ -1,0 +1,6 @@
+com\example\CarritoCompra\controller\CarritoCompraController.class
+com\example\CarritoCompra\client\PeliculaClient.class
+com\example\CarritoCompra\model\CarritoCompra.class
+com\example\CarritoCompra\service\CarritoCompraService.class
+com\example\CarritoCompra\repository\CarritoCompraRepository.class
+com\example\CarritoCompra\CarritoCompraApplication.class
