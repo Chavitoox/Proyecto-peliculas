@@ -1,0 +1,11 @@
+com\example\pelicula\controller\PeliculaController.class
+com\example\pelicula\Exception\RecursoNoEncontradoException.class
+com\example\pelicula\client\IdiomaClient.class
+com\example\pelicula\model\Pelicula.class
+com\example\pelicula\client\DirectorClient.class
+com\example\pelicula\repository\PeliculaRepository.class
+com\example\pelicula\Exception\GlobalExceptionHandler.class
+com\example\pelicula\PeliculaApplication.class
+com\example\pelicula\config\SecurityConfig.class
+com\example\pelicula\service\PeliculaService.class
+com\example\pelicula\client\CategoriaClient.class

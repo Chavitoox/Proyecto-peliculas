@@ -1,0 +1,30 @@
+services:
+  mysql-db:
+    image: mysql:8.4
+    container_name: mysql-db
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: peliculasDB
+
+    ports:
+     - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p1234"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  pelicula-services:
+    build: .
+    container_name: pelicula-service
+    ports:
+      - "8083:8083"
+
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+
+    
