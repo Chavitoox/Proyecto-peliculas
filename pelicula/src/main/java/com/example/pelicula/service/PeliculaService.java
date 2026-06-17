@@ -40,23 +40,31 @@ public class PeliculaService {
         }
 
         try {
-            Object idioma = idiomaClient.buscarIdioma(p.getIdIdioma());
-            if (idioma == null){
-                return ResponseEntity.badRequest().body("El idioma no existe");
-            }
-            Object categoria = categoriaClient.buscarCategoria(p.getIdCategoria());
-            if (categoria == null){
-                return ResponseEntity.badRequest().body("La categoria no existe");
-            }
-            Object director = directorClient.buscarDirector(p.getIdDirector());
-            if (director == null){
-                return ResponseEntity.badRequest().body("El director no existe");
+            try {
+                idiomaClient.buscarIdioma(p.getIdIdioma());
+            } catch (feign.FeignException.NotFound e) {
+                return ResponseEntity.badRequest().body("El idioma con ID " + p.getIdIdioma() + " no existe en MongoDB");
             }
 
+            try {
+                categoriaClient.buscarCategoria(p.getIdCategoria());
+            } catch (feign.FeignException.NotFound e) {
+                return ResponseEntity.badRequest().body("La categoria con ID " + p.getIdCategoria() + " no existe en MongoDB");
+            }
+            try {
+                directorClient.buscarDirector(p.getIdDirector());
+            } catch (feign.FeignException.NotFound e) {
+                return ResponseEntity.badRequest().body("El director con ID " + p.getIdDirector() + " no existe en MongoDB");
+            }
             return ResponseEntity.ok(repo.save(p));
-        }
-        catch (Exception e) {
-            return ResponseEntity.internalServerError().body("error al conectar con microservicios");
+            
+        } catch (feign.FeignException e) {
+            // Esto captura si el microservicio destino tira un error interno (500)
+            return ResponseEntity.status(500).body("Error en el microservicio externo: " + e.getMessage());
+        } catch (Exception e) {
+            // Esto captura si el microservicio está COMPLETAMENTE CAÍDO (Connection Refused)
+            e.printStackTrace(); // Te muestra en la consola de Spring cuál servicio falló
+            return ResponseEntity.internalServerError().body("error al conectar con microservicios: " + e.getMessage());
         }
     }
 
