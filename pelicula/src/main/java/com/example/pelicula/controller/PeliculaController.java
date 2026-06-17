@@ -2,6 +2,7 @@ package com.example.pelicula.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.pelicula.model.Pelicula;
@@ -26,8 +27,10 @@ public class PeliculaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear (@Valid @RequestBody Pelicula p){
-        return service.crear(p);
+    public ResponseEntity<?> crear(@Valid @RequestBody Pelicula p) {
+        Pelicula nuevaPelicula = service.crear(p);
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevaPelicula);
     }
 
     @PutMapping("/{id}")
