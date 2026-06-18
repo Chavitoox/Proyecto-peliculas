@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "9fb2c92e-abc7-40e3-a5c0-9e076ff1a1d0",
+    "name": "Prueba Peliculas Shop",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54313590",
+    "_collection_link": "https://go.postman.co/collection/54313590-9fb2c92e-abc7-40e3-a5c0-9e076ff1a1d0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Categoria",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreCategoria\": \"Terror\",\r\n    \"idCategoria\": \"6a10a12f05d0997be26b5234\"\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/categorias",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categorias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Directores",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"DIR01\",\r\n    \"nombre\": \"Christopher Nolan\",\r\n    \"nacionalidad\": \"Británica\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/directores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "directores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "idioma",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"IDM01\",\r\n    \"lenguaje\": \"Español\",\r\n    \"version\": \"Latino\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/idiomas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "idiomas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "pelicula",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Inception\",\r\n    \"duracion\": 148,\r\n    \"sinopsis\": \"Un ladrón que roba secretos corporativos a través del uso de la tecnología de compartir sueños.\",\r\n    \"idDirector\": \"6a2f1fa2119ad5fa3fb2d828\",\r\n    \"idIdioma\": \"6a2f1f624a06949923baaaf2\",\r\n    \"idCategoria\": \"6a10a12f05d0997be26b5234\",\r\n    \"anio\": 2010\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CompraCarrito",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"precio\": 4500.0,\r\n    \"idPelicula\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8084/compras/compra",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "compras",
+            "compra"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PagoCompra-Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"formaPago\": \"Tarjeta de Crédito\",\r\n    \"total\": 4500.0,\r\n    \"idCompra\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/pagoCompra",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "pagoCompra"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PagoCompra-Put",
+      "request": {
+        "method": "PUT",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "PagoCompra-Delete",
+      "request": {
+        "method": "DELETE",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "f417e0d0-df95-4130-8b9d-a04610a264ef",
+    "name": "Directores peliculas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-f417e0d0-df95-4130-8b9d-a04610a264ef?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Directores",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/directores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "directores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Directores",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"6a231d6aa62ae3956ffc8c51\",\r\n    \"nacionalidad\": \"Británica\",\r\n    \"nombre\": \"Christopher Nolan\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/directores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "directores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Directores",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/directores/6a231e95a62ae3956ffc8c52",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "directores",
+            "6a231e95a62ae3956ffc8c52"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put Directores",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nacionalidad\": \"Estado Unidense\",\r\n    \"nombre\": \"Stanley Kubrick\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/directores/6a231f31a62ae3956ffc8c54",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "directores",
+            "6a231f31a62ae3956ffc8c54"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "```\n{\n    \"id\": \"6a231d6aa62ae3956ffc8c51\",\n    \"nacionalidad\": \"Británica\",\n    \"nombre\": \"Christopher Nolan\"\n},\n{\n    \"id\": \"6a231f0ea62ae3956ffc8c53\",\n    \"nacionalidad\": \"Estado Unidense\",\n    \"nombre\": \"Steven Spielberg\"\n},\n{\n    \"id\": \"6a231f31a62ae3956ffc8c54\",\n    \"nacionalidad\": \"Estado Unidense\",\n    \"nombre\": \"Stanley Kubrick\"\n}\n\n ```"
+      },
+      "response": []
+    }
+  ]
+}
