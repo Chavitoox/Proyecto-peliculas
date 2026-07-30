@@ -1,0 +1,87 @@
+{
+  "info": {
+    "_postman_id": "17fc46f6-386f-4ced-8434-b52a68509372",
+    "name": "Reseñas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-17fc46f6-386f-4ced-8434-b52a68509372?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8084/resenias",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "resenias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"comentario\": \"muy buena peli\",\r\n    \"calificacion\": 5,\r\n    \"idPelicula\": 1,\r\n    \"idUsuario\" : 1\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8084/resenias",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "resenias"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8084/resenias/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "resenias",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "```\n{\n    \"comentario\": \"Muy buena peli\",\n    \"calificacion\": 5,\n    \"idPelicula\": 1,\n}\n{\n    \"comentario\": \"ahi noma la peli\",\n    \"calificacion\": 3,\n    \"idPelicula\": 2,\n}\n{\n    \"comentario\": \"horrible la peli\",\n    \"calificacion\": 1,\n    \"idPelicula\": 3,\n}\n\n ```"
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "f4e364f0-b96a-461b-a7a4-f7965b62555c",
+    "name": "Idioma",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-f4e364f0-b96a-461b-a7a4-f7965b62555c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idiomas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idiomas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\r\n    {\r\n        \"lenguaje\": \"ingles\",\r\n        \"version\": \"original\"\r\n    }\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/idiomas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idiomas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"lenguaje\": \"Español\",\r\n\"version\": \"doblada\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/idiomas/6a14fa4f428c856ba5b21311",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "idiomas",
+            "6a14fa4f428c856ba5b21311"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"id\": \"6a14fa4f428c856ba5b21311\",\r\n\"lenguaje\": \"Español\",\r\n\"version\": \"doblada\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8082/idiomas/6a14fa4f428c856ba5b21311",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "idiomas",
+            "6a14fa4f428c856ba5b21311"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "```\n    {\n        \"lenguaje\": \"español\",\n        \"version\": \"doblada\"\n    }\n    {\n        \"lenguaje\": \"español neutro\",\n        \"version\": \"doblada\"\n    }\n    {\n        \"lenguaje\": \"ingles\",\n        \"version\": \"original\"\n    }\n\n ```"
+      },
+      "response": []
+    }
+  ]
+}

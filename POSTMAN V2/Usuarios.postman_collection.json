@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "e95e32b7-912a-439f-b429-abfb658de080",
+    "name": "Usuarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-e95e32b7-912a-439f-b429-abfb658de080?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8085/usuarios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "usuarios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreUsuario\" : \"Matias\",\r\n    \"edad\" : 19,\r\n    \"correo\" : \"ma.pizarroz@duocuc.cl\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/usuarios",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "usuarios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreUsuario\" : \"Santiago\",\r\n    \"edad\" : 19,\r\n    \"correo\" : \"san.aburto@duocuc.cl\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8085/usuarios/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "usuarios",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombreUsuario\" : \"Santiago\",\r\n    \"edad\" : 19,\r\n    \"correo\" : \"san.aburto@duocuc.cl\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8085/usuarios/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8085",
+          "path": [
+            "usuarios",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "```\n{\n    \"correo\": \"san.aburto@duocuc.cl\",\n    \"edad\": 19,\n    \"nombreUsuario\": \"Santiago\"\n}\n{\n    \"correo\": \"j.jara@duocuc.cl\",\n    \"edad\": 26,\n    \"nombreUsuario\": \"Juan\"\n}\n{\n    \"correo\": \"ma.pizarroz@duocuc.cl\",\n    \"edad\": 19,\n    \"nombreUsuario\": \"Matias\"\n}\n\n ```"
+      },
+      "response": []
+    }
+  ]
+}

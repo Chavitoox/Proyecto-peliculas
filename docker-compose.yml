@@ -1,0 +1,137 @@
+services:
+  mysql-db:
+    image: mysql:8.4
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+    ports:
+      - "3307:3306"
+    healthcheck:
+
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p1234 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    volumes:
+      - mysql_cine_data:/var/lib/mysql
+    
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - cine-network
+
+  idioma-service:
+    build: ./Idioma
+    container_name: idioma-service
+    ports:
+      - "8080:8080"
+    environment:
+    
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/IdiomaDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  categoria-service:
+    build: ./Categoria
+    container_name: categoria-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/CategoriaDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  director-service:
+    build: ./director
+    container_name: director-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/DirectorDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  pelicula-service:
+    build: ./pelicula
+    container_name: pelicula-service
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/PeliculasDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  resenia-service:
+    build: ./resenia
+    container_name: resenia-service
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/resenias_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  usuario-service:
+    build: ./usuario
+    container_name: usuario-service
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/UsuariosDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+
+  recomendacion-service:
+    build: ./recomendacion
+    container_name: recomendacion-service
+    ports:
+      - "8086:8086"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/RecomendacionDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - PELICULA_SERVICE_URL=http://pelicula-service:8083
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+      pelicula-service:
+        condition: service_started
+    networks:
+      - cine-network
+  
+  notificacion-service:
+    build: ./notificacion
+    container_name: notificacion-service
+    ports:
+      - "8087:8087"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/NotificacionDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - cine-network
+  
+volumes:
+  mysql_cine_data:
+
+networks:
+  cine-network:
+    driver: bridge

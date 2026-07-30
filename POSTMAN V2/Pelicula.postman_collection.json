@@ -1,0 +1,180 @@
+{
+  "info": {
+    "_postman_id": "79bed34f-59b4-4d2e-b939-19859acd2ce0",
+    "name": "Pelicula",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53385701",
+    "_collection_link": "https://go.postman.co/collection/53385701-79bed34f-59b4-4d2e-b939-19859acd2ce0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  {  \r\n    \"pelicula\":{\r\n        \"anio\": 2005,\r\n        \"duracion\": 160,\r\n        \"idDirector\": 3,\r\n        \"nombre\": \"Kill Bill\"\r\n    },\r\n    \r\n        \"idCategorias\" : [1,2],\r\n        \"idIdiomas\" : [1,2]\r\n    \r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"pelicula\": {\r\n        \"nombre\": \"Kill Bill 3\",\r\n        \"duracion\": 175,\r\n        \"anio\": 2008,\r\n        \"idDirector\": 3\r\n    },\r\n    \"idsCategorias\": [1],\r\n    \"idsIdiomas\": [1, 3]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "1234",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\" : \"kill bill return\",\r\n    \"anio\" : 2010,\r\n    \"duracion\" : 190,\r\n    \"idDirector\" : 3\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\" : \"Kill Bill\",\r\n    \"duracion\" : 2,\r\n    \"anio\" : 2003,\r\n    \"idIdioma\" : \"6a14fa4f428c856ba5b21311\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/peliculas/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "peliculas",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Docs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        },
+        "description": "{  \n\"pelicula\": {  \n\"nombre\": \"Kill Bill 3\",  \n\"duracion\": 175,  \n\"anio\": 2008,  \n\"idDirector\": 3  \n},  \n\"idsCategorias\": \\[1\\],  \n\"idsIdiomas\": \\[1, 3\\]  \n}"
+      },
+      "response": []
+    }
+  ]
+}
